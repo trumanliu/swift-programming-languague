@@ -155,8 +155,65 @@ let statics = calculateStatistics(scores: [5,3,100,3,9])
 statics.0
 statics.max
 
+//可变个数参数
+
+func sumOf(numbers:Int...) -> Int {
+    var sum = 0
+    for number in numbers{
+        sum += number
+    }
+    return sum
+}
+
+sumOf()
+sumOf(numbers: 1,2,3)
+func sumOfPara(numbers:Int...,kind:String) -> Int {
+    var sum = 0
+    for number in numbers{
+        sum += number
+    }
+    print(kind)
+    return sum
+}
+
+sumOfPara(numbers: 1,2,3,4 , kind: "wow")
+//由于在调用方法时会显式指明参数名称，所以可变个参数的位置可以不是最后一个
 
 
+//练习题：均值
+func meanOf(numbers:Int...) -> Int {
+    var sum = 0
+    for number in numbers{
+        sum += number
+    }
+    return sum/numbers.count
+}
+
+meanOf(numbers: 1,2,3,4,5,6,7)
+
+
+//函数可以嵌套
+func returnFifteen() -> Int {
+    var y = 10
+    func minus(){
+        y = 25 - y
+    }
+    minus()
+    return y
+}
+
+returnFifteen()
+
+//函数时一级类型，可以作为返回值
+func makeIncrementer() -> ( (Int) -> Int){
+    func addOne(number:Int) -> Int{
+        return 1 + number
+    }
+    return addOne
+}
+
+var increment = makeIncrementer()
+increment(1)
 
 
 
