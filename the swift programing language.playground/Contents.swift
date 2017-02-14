@@ -215,5 +215,36 @@ func makeIncrementer() -> ( (Int) -> Int){
 var increment = makeIncrementer()
 increment(1)
 
+//函数可以当作参数传入另一个函数
+
+func  hasAnyMatches(list:[Int],condition:(Int) -> Bool) -> Bool{
+    for item in list{
+        if condition(item){
+            return true
+        }
+    }
+    return false
+}
+
+func lessThanTen(number:Int) -> Bool{
+    return number < 10
+}
+
+var numbers = [72,39,27,11]
+hasAnyMatches(list: numbers, condition: lessThanTen)
+
+//使用{} 来创建一个匿名闭包。使用in将参数根返回值类型与声明与闭包函数体进行分离
+numbers.map({
+    (number : Int) -> Int in
+    let result = 3 * number
+    return result
+})
+
+
+let mappedNumbers = numbers.map({number in 3 * number})
+print(mappedNumbers)
+
+
+
 
 
