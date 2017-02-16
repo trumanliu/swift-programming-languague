@@ -112,5 +112,28 @@ triangle.perimeter = 100.0
 triangle.sideLength
 
 
+//enum & structre
+//枚举可以包含方法
+enum Rank: Int{
+    case Ace = 1
+    case Tow,Three,Four,Five,Six,Seven,Eight,Nine,Ten
+    case Jack,Queen,King
+    func simpleDesc() -> String {
+        switch self {
+        case .Ace:
+            return "ace"
+        case .Jack:
+            return "jack"
+        case .King:
+            return "king"
+        default:
+            return String(self.rawValue)
+        }
+    }
+}
+
+let ace = Rank.Ace
+let aceRawValue = ace.rawValue
 
 
+//结构体与类有很多相同的地方，如方法与构造器 结构体传值，类传引用
