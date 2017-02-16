@@ -136,4 +136,76 @@ let ace = Rank.Ace
 let aceRawValue = ace.rawValue
 
 
+enum Suit{
+    case Spades,Hearts,Diamonds,Clubs
+    func simple() -> String {
+        switch self {
+        case .Spades:
+            return "spades"
+        case .Hearts:
+            return "hearts"
+        case .Diamonds:
+            return "diamonds"
+        case .Clubs:
+            return "clubs"
+         
+        }
+    }
+}
+
+let hearts = Suit.Hearts
+let heartsDes = hearts.simple()
+
+
 //结构体与类有很多相同的地方，如方法与构造器 结构体传值，类传引用
+
+struct Card{
+    var rank:Rank
+    var suit:Suit
+    
+    func simpleDescription() -> String {
+        return "The \(rank.simpleDesc()) of \(suit.simple())"
+    }
+    
+}
+
+let thressOfShapes = Card(rank: .Three, suit: .Spades)
+let threeOfSpadesDescription = thressOfShapes.simpleDescription()
+
+
+//协议与扩展
+protocol ExampleProtocol{
+    var simpleDes : String{get}
+    mutating func adjust()
+}
+
+//错误处理
+
+enum PrinterError:Error{
+    case OutOfPaper
+    case NoToner
+    case Onfire
+}
+
+
+func send(job:Int,toPrinter PrinterName:String) throws -> String{
+    if PrinterName == "Never Has Toner"{
+        throw PrinterError.NoToner
+    }
+    return "Job sent"
+}
+
+
+//第二章
+
+//元组部分(tuples)
+var http404Error = (404,"Not found")
+let (statusCode,statusMessage) = http404Error
+
+print("the status is \(statusCode)")
+
+
+//可选类型
+//使用 可选类型 处理值缺失的情况。可选类型表示： 有值 x 没有值
+
+
