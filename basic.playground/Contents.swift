@@ -38,3 +38,25 @@ if  let rspcode = serverResponseCode {
 //断言
 var age = -1
 //assert(age>0 , "A person's age cannot be less than zero")
+
+
+//运算符
+//空合运算符(Nil coalescing Operator)
+serverResponseCode
+serverResponseCode = nil
+serverResponseCode ?? 404
+//对可选类型做空判断 如果包含不是nil的值则解封，否则返回后面的默认值
+//相当于
+serverResponseCode != nil ? serverResponseCode! : 404
+//区间运算符 tour里面说过了……
+for index in 1...5{
+    print("\(index)")
+}
+//...闭区间[a,b]
+
+for index in 1..<5{
+    print("\(index)")
+}
+//前闭后开[a,b)
+
+
