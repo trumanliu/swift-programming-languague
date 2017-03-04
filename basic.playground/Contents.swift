@@ -61,3 +61,15 @@ for index in 1..<5{
 
 //String 的操作 
 // == 可以直接用来判断两个字符串是否相等
+
+//swift中swith case
+//case可以有多个值
+var code = 200
+switch code {
+case 404,403: //case 多个值
+    print("error occured ")
+case 1...100:  //case 一个范围
+    print("unknown code")
+default:
+    print("ok")
+}
