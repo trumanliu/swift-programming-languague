@@ -73,3 +73,37 @@ case 1...100:  //case 一个范围
 default:
     print("ok")
 }
+
+
+//case 可以用where语句来判断额外的条件
+let yetAntherPoint = (1,-1)
+switch yetAntherPoint {
+case let (x,y) where x == y:
+    print("(\(x),\(y)) is on the line x=y")
+case let (x,y) where x == -y:
+    print("(\(x),\(y)) is on the line x=-y")
+case let (x,y): //此处并不能使用default因为需要使用变量来承接x，y
+    print("(\(x),\(y)) is just some arbitrary point")
+}
+
+let stillAnotherPoint=(9,0)
+switch stillAnotherPoint {
+case (let distance,0),(0,let distance): //此处都匹配了distance
+    print("on an axis , \(distance) from the onrigin")
+default:
+    print("not on an axis")
+}
+
+//循环控制语句 continue／break／fallthrough／throw／return
+//其中比较不同的是fallthrough
+//swift的case是遇到其中一个就自带break属性的，需要实现不带break属性时可以借助fallthrough
+let intnum = 5
+var description = "the number \(intnum) is "
+switch intnum{
+case 2,3,5,7,11,13,17,19:
+    description += " a prime number and also"
+    fallthrough
+default:
+    description += " an integer."
+}
+print(description)
